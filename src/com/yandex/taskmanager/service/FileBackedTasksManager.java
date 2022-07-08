@@ -13,7 +13,7 @@ import java.util.List;
 public class FileBackedTasksManager extends InMemoryTaskManager implements TaskManager {
     private static final Charset charset = StandardCharsets.UTF_8;
     private static String path;
-    private final String HEAD_FILE = "id,type,name,status,description,epic\n";
+    private final String HEAD_FILE = "id,type,name,status,des,epic,start Time,duration,end Time\n";
 
     public FileBackedTasksManager(String path) {
         this.path = path;
@@ -182,7 +182,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
         }
     }
 
-    //id,type,name,status,description,epic
+
 
     public static FileBackedTasksManager loadFromFile(File file) {
         FileBackedTasksManager backedTasksManager = new FileBackedTasksManager(file.getPath());
@@ -282,7 +282,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
         managerDefault.getSubtaskId(5);
         managerDefault.getSubtaskId(6);
         managerDefault.getEpicById(7);*/
-        File file = new File("C:\\Users\\Иван\\Desktop\\bootFile.txt");
+        File file = new File("resources/History.txt");
         TaskManager loadManager = loadFromFile(file);
         Task task2 = new Task("Проверка id", "Проверка нового метода", Status.NEW);
         loadManager.moveTask(task2);

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="82833545-bf10-46a4-8893-ced22816a23b" name="Changes" comment="Исправлена ошибки 2 ревью, необходимо доделать проблему с новым id" />
+    <list default="true" id="82833545-bf10-46a4-8893-ced22816a23b" name="Changes" comment="Первое ревью 7 спринта">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootFile.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/FileBackedTasksManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/FileBackedTasksManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/words.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/words.txt" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +46,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "last_opened_file_path": "C:/Users/Иван/Desktop/dima",
+    "last_opened_file_path": "C:/Users/Иван/IdeaProjects/java-sprint4-hw-master-main",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -308,7 +314,21 @@
       <option name="project" value="LOCAL" />
       <updated>1655926946055</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Первое ревью 7 спринта">
+      <created>1657310834014</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1657310834014</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Первое ревью 7 спринта">
+      <created>1657311013310</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1657311013310</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -337,26 +357,12 @@
     <MESSAGE value="Проверка 1" />
     <MESSAGE value="Исправлена ошибки 1 ревью" />
     <MESSAGE value="Исправлена ошибки 2 ревью, необходимо доделать проблему с новым id" />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправлена ошибки 2 ревью, необходимо доделать проблему с новым id" />
+    <MESSAGE value="Первое ревью 7 спринта" />
+    <option name="LAST_COMMIT_MESSAGE" value="Первое ревью 7 спринта" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/service/FileBackedTasksManager.java</url>
-          <line>291</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/service/FileBackedTasksManager.java</url>
-          <line>289</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/service/FileBackedTasksManager.java</url>
-          <line>286</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Tests/managers/TaskManagerTest.java</url>
           <line>163</line>

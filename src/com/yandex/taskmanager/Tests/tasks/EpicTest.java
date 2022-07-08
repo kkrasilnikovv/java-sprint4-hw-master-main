@@ -1,4 +1,4 @@
-package Tests.tasks;
+package com.yandex.taskmanager.Tests.tasks;
 
 import com.yandex.taskmanager.model.Epic;
 import com.yandex.taskmanager.model.Status;

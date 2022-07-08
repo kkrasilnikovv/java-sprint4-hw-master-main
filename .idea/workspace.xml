@@ -75,12 +75,12 @@
       <module name="java-sprint3-hw" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Tests.managers.*" />
+          <option name="PATTERN" value="com.yandex.taskmanager.Tests.managers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests.managers" />
-      <option name="MAIN_CLASS_NAME" value="Tests.managers.FileBackedTasksManagerTest" />
+      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.FileBackedTasksManagerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -90,12 +90,12 @@
       <module name="java-sprint3-hw" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Tests.managers.*" />
+          <option name="PATTERN" value="com.yandex.taskmanager.Tests.managers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests.managers" />
-      <option name="MAIN_CLASS_NAME" value="Tests.managers.FileBackedTasksManagerTest" />
+      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.FileBackedTasksManagerTest" />
       <option name="METHOD_NAME" value="shouldBeOneEpicWithoutSubtaskInLoadFile" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -106,12 +106,12 @@
       <module name="java-sprint3-hw" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Tests.managers.*" />
+          <option name="PATTERN" value="com.yandex.taskmanager.Tests.managers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests.managers" />
-      <option name="MAIN_CLASS_NAME" value="Tests.managers.HistoryManagerTest" />
+      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.HistoryManagerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -121,12 +121,12 @@
       <module name="java-sprint3-hw" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Tests.managers.*" />
+          <option name="PATTERN" value="com.yandex.taskmanager.Tests.managers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests.managers" />
-      <option name="MAIN_CLASS_NAME" value="Tests.managers.InMemoryTaskManagerTest" />
+      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.InMemoryTaskManagerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -136,12 +136,12 @@
       <module name="java-sprint3-hw" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Tests.managers.*" />
+          <option name="PATTERN" value="com.yandex.taskmanager.Tests.managers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests.managers" />
-      <option name="MAIN_CLASS_NAME" value="Tests.managers.InMemoryTaskManagerTest" />
+      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.InMemoryTaskManagerTest" />
       <option name="METHOD_NAME" value="shouldBeNullWhenCheckEndTimeWithEmptySubtasks" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">

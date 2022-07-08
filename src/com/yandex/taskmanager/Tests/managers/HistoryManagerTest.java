@@ -1,4 +1,4 @@
-package Tests.managers;
+package com.yandex.taskmanager.Tests.managers;
 
 
 import com.yandex.taskmanager.model.Status;

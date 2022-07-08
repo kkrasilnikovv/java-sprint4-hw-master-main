@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="82833545-bf10-46a4-8893-ced22816a23b" name="Changes" comment="Исправлена ошибки 2 ревью, необходимо доделать проблему с новым id" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="28W683PrTrjBmUvwCXKffvWux68" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
+    "last_opened_file_path": "C:/Users/Иван/Desktop/dima",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Иван\IdeaProjects\java-sprint4-hw-master-main\src" />
+      <recent name="C:\Users\Иван\IdeaProjects\java-sprint4-hw-master-main\src\Tests\backend.managers" />
+      <recent name="C:\Users\Иван\IdeaProjects\java-sprint4-hw-master-main\src\Tests" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/com.yandex.taskmanager/service" />
+      <recent name="$PROJECT_DIR$/com.yandex.taskmanager/model" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.yandex.taskmanager.model" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.FileBackedTasksManagerTest.shouldBeOneEpicWithoutSubtaskInLoadFile">
+    <configuration name="FileBackedTasksManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-sprint3-hw" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.managers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests.managers" />
+      <option name="MAIN_CLASS_NAME" value="Tests.managers.FileBackedTasksManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileBackedTasksManagerTest.shouldBeOneEpicWithoutSubtaskInLoadFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-sprint3-hw" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.managers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests.managers" />
+      <option name="MAIN_CLASS_NAME" value="Tests.managers.FileBackedTasksManagerTest" />
+      <option name="METHOD_NAME" value="shouldBeOneEpicWithoutSubtaskInLoadFile" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HistoryManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-sprint3-hw" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.managers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests.managers" />
+      <option name="MAIN_CLASS_NAME" value="Tests.managers.HistoryManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InMemoryTaskManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-sprint3-hw" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.managers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests.managers" />
+      <option name="MAIN_CLASS_NAME" value="Tests.managers.InMemoryTaskManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InMemoryTaskManagerTest.shouldBeNullWhenCheckEndTimeWithEmptySubtasks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-sprint3-hw" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.managers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests.managers" />
+      <option name="MAIN_CLASS_NAME" value="Tests.managers.InMemoryTaskManagerTest" />
+      <option name="METHOD_NAME" value="shouldBeNullWhenCheckEndTimeWithEmptySubtasks" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.FileBackedTasksManagerTest.shouldBeOneEpicWithoutSubtaskInLoadFile" />
+        <item itemvalue="JUnit.FileBackedTasksManagerTest" />
+        <item itemvalue="JUnit.HistoryManagerTest" />
+        <item itemvalue="JUnit.InMemoryTaskManagerTest" />
+        <item itemvalue="JUnit.InMemoryTaskManagerTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="82833545-bf10-46a4-8893-ced22816a23b" name="Changes" comment="" />
+      <created>1651319831648</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1651319831648</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Программа исправна работает на поверхностных тестах.">
+      <created>1651672214532</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1651672214533</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Программа исправна работает на поверхностных тестах.">
+      <created>1651672232965</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1651672232965</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Программа исправна работает на поверхностных тестах.">
+      <created>1651672511211</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1651672511211</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Программа исправна работает на поверхностных тестах.">
+      <created>1651672716206</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1651672716206</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Программа исправна работает на поверхностных тестах.">
+      <created>1651673138865</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1651673138865</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Программа исправна работает на поверхностных тестах.">
+      <created>1651673601240</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1651673601240</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Исправлена половина ошибок">
+      <created>1651697406788</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1651697406788</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Исправлены ошибки 1 ревью">
+      <created>1651773217010</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1651773217011</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Исправлены ошибки 1 ревью">
+      <created>1651780395073</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1651780395074</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Исправлены ошибки 1 ревью">
+      <created>1651850411350</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1651850411350</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Первая проверка">
+      <created>1652644645910</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1652644645910</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Сделаны правки 1 ревью">
+      <created>1652650883558</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1652650883558</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Сделаны правки 2 ревью">
+      <created>1652723407647</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1652723407647</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Первое ревью">
+      <created>1654033778071</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1654033778071</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Исправлена логика проверки статуса">
+      <created>1654171595410</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1654171595410</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Сдача 100%">
+      <created>1654354664845</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1654354664845</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Сохранение 1">
+      <created>1655498466025</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1655498466025</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Осталось написать загрузку истории с файла">
+      <created>1655661867165</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1655661867165</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Проверка 1">
+      <created>1655717156523</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1655717156523</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Исправлена ошибки 1 ревью">
+      <created>1655851511500</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1655851511500</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Исправлена ошибки 2 ревью, необходимо доделать проблему с новым id">
+      <created>1655926946055</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1655926946055</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Программа исправна работает на поверхностных тестах." />
+    <MESSAGE value="Исправлена половина ошибок" />
+    <MESSAGE value="Исправлены ошибки 1 ревью" />
+    <MESSAGE value="Первая проверка" />
+    <MESSAGE value="Сделаны правки 1 ревью" />
+    <MESSAGE value="Сделаны правки 2 ревью" />
+    <MESSAGE value="Первое ревью" />
+    <MESSAGE value="Исправлена логика проверки статуса" />
+    <MESSAGE value="Сдача 100%" />
+    <MESSAGE value="Сохранение 1" />
+    <MESSAGE value="Осталось написать загрузку истории с файла" />
+    <MESSAGE value="Проверка 1" />
+    <MESSAGE value="Исправлена ошибки 1 ревью" />
+    <MESSAGE value="Исправлена ошибки 2 ревью, необходимо доделать проблему с новым id" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправлена ошибки 2 ревью, необходимо доделать проблему с новым id" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/service/FileBackedTasksManager.java</url>
+          <line>291</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/service/FileBackedTasksManager.java</url>
+          <line>289</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/service/FileBackedTasksManager.java</url>
+          <line>286</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Tests/managers/TaskManagerTest.java</url>
+          <line>163</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Tests/managers/TaskManagerTest.java</url>
+          <line>175</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.yandex.taskmanager.service.InMemoryHistoryManager" memberName="history" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>

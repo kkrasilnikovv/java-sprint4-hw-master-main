@@ -1,5 +1,7 @@
 package com.yandex.taskmanager.model;
 
+import java.util.Objects;
+
 public class Subtask extends Task {
     private final Integer epicId;
 
@@ -22,5 +24,18 @@ public class Subtask extends Task {
 
         return super.toString() +','+
                 epicId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Subtask subtask = (Subtask) o;
+        return epicId.equals(subtask.epicId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(epicId);
     }
 }

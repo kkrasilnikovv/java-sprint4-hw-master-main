@@ -25,38 +25,63 @@ public class InMemoryTaskManager implements TaskManager {
     protected final HashMap<Integer, Subtask> subtasks = new HashMap<>();
     protected final HashMap<Integer, Epic> epics = new HashMap<>();
     private Set<Task> sortedTasks = new TreeSet<>((o1, o2) -> {
-        if (o1.toString().length() > o2.toString().length()) {
-            return 1;
-        } else if (o1.toString().length() < o2.toString().length()) {
-            return -1;
-        } else {
-            String[] a = o1.toString().split(",");
-            if (a.length != 5) {
-                LocalDateTime firstTime = o1.getStartTime();
-                LocalDateTime secondTime = o2.getStartTime();
-                if (firstTime.isAfter(secondTime)) {
-                    return -1;
-                } else if (firstTime.isBefore(secondTime)) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            } else {
+        if(o1.getStartTime()!=null && o2.getStartTime()!=null){
+            if(o1.getStartTime().isAfter(o2.getStartTime())){
+                return 1;
+            }else
                 return -1;
+        }else if (o1.getStartTime()==null && o2.getStartTime()==null){
+            if (o1.getId() > o2.getId()) {
+                return 1;
+            }else
+                return -1;
+        }
+        else {
+            return 0;
+        }
+
+    });
+
+    @Override
+    public boolean isValid(Task task) {
+        if (task.getEndTime() != null) {
+            for (Task element : sortedTasks) {
+                if(element.getStartTime()==null){
+                    return true;
+                }
+                if (task.getStartTime().equals(element.getStartTime())
+                        || (task.getStartTime().isBefore(element.getStartTime())
+                        && task.getEndTime().isAfter(element.getStartTime()))
+                        || (task.getStartTime().isAfter(element.getStartTime())
+                        && task.getStartTime().isBefore(element.getEndTime()))) {
+                    return false;
+                }
             }
         }
-    });
-    @Override
-    public TreeSet<Task> getPrioritizedTasks() {
-        return (TreeSet<Task>) sortedTasks;
+        return true;
     }
+    public void setPrioritizedTasks(Task task){
+        sortedTasks.add(task);
+    }
+
+    @Override
+    public Set getPrioritizedTasks() {
+        return  sortedTasks;
+    }
+
     @Override
     public LocalDateTime getEndTime(Epic epic) {
         if (!subtasks.isEmpty()) {
             epic.setDuration(Duration.ofMinutes(0));
             epic.setStartTime(subtasks.entrySet().iterator().next().getValue().getStartTime());
+
             for (Subtask subtask : subtasks.values()) {
-                if (epic.getStartTime().isAfter(subtask.getStartTime())) {
+                if(subtasks.size()==1){
+                    epic.setStartTime(subtask.getStartTime());
+                    epic.setDuration(subtask.getDuration());
+                    return epic.getStartTime().plus(epic.getDuration());
+                }
+                else if (epic.getStartTime().isAfter(subtask.getStartTime())) {
                     epic.setStartTime(subtask.getStartTime());
                 }
                 epic.setDuration(epic.getDuration().plus(subtask.getDuration()));
@@ -70,9 +95,14 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void moveTask(Task task) {
-        Integer temp = createId();
-        tasks.put(temp, task);
-        task.setId(temp);
+        if (isValid(task)) {
+            Integer temp = createId();
+            tasks.put(temp, task);
+            task.setId(temp);
+            sortedTasks.add(task);
+        } else {
+            throw new Error("Ошибка! Время выполнения пересекается"+task);
+        }
     }
 
     @Override
@@ -94,8 +124,15 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public boolean updateTask(Task task) {
         if (tasks.containsKey(task.getId())) {
-            tasks.replace(task.getId(), task);
-            return true;
+            if (isValid(task)) {
+                sortedTasks.remove(tasks.get(task.getId()));
+                tasks.replace(task.getId(), task);
+                sortedTasks.add(task);
+                return true;
+            } else {
+                throw new Error("Ошибка! Время выполнения пересекается"+task);
+            }
+
         } else {
             return false;
         }
@@ -104,6 +141,9 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void deleteTaskAll() {
         managerHistory.removeAll(tasks);
+        for(Task task:tasks.values()){
+            sortedTasks.remove(task);
+        }
         tasks.clear();
 
     }
@@ -111,21 +151,29 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void deleteTaskById(Integer id) {
         if (tasks.containsKey(id)) {
+            if(sortedTasks.contains(tasks.get(id))) {
+                sortedTasks.remove(tasks.get(id));
+            }
             tasks.remove(id);
             managerHistory.removeById(id);
-        }
-        else
+
+        } else
             throw new Error("Такой задачи нет");
     }
 
     @Override
     public void moveSubtask(Subtask subtask) {
         if (epics.containsKey(subtask.getEpicId())) {
-            Integer temp = createId();
-            subtasks.put(temp, subtask);
-            subtask.setId(temp);
-            epics.get(subtask.getEpicId()).setIdSubtaskValue(subtask.getId());
-            checkStatusEpic(epics.get(subtask.getEpicId()));//проверка
+            if (isValid(subtask)) {
+                Integer temp = createId();
+                subtasks.put(temp, subtask);
+                subtask.setId(temp);
+                epics.get(subtask.getEpicId()).setIdSubtaskValue(subtask.getId());
+                checkStatusEpic(epics.get(subtask.getEpicId()));//проверка
+                sortedTasks.add(subtask);
+            } else {
+                throw new Error("Ошибка! Время выполнения пересекается"+subtask);
+            }
         }
     }
 
@@ -148,9 +196,15 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public boolean updateSubtask(Subtask subtask) {
         if (subtasks.containsKey(subtask.getId())) {
-            subtasks.replace(subtask.getId(), subtask);
-            checkStatusEpic(epics.get(subtask.getEpicId()));
-            return true;
+            if (isValid(subtask)) {
+                sortedTasks.remove(subtasks.get(subtask.getId()));
+                subtasks.replace(subtask.getId(), subtask);
+                sortedTasks.add(subtask);
+                checkStatusEpic(epics.get(subtask.getEpicId()));
+                return true;
+            } else {
+                throw new Error("Ошибка! Время выполнения пересекается"+subtask);
+            }
         } else {
             return false;
         }
@@ -159,6 +213,9 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void deleteSubtaskAll() {
         managerHistory.removeAll(subtasks);
+        for(Subtask subtask: subtasks.values()){
+            sortedTasks.remove(subtask);
+        }
         subtasks.clear();
 
         for (Epic epic : epics.values()) {
@@ -175,6 +232,7 @@ public class InMemoryTaskManager implements TaskManager {
             subtasks.remove(id);
             managerHistory.removeById(id);
             checkStatusEpic(epic);
+            sortedTasks.remove(subtasks.get(id));
             return true;
         } else {
             return false;
@@ -183,10 +241,15 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void moveEpic(Epic epic) {
-        Integer temp = createId();
-        epics.put(temp, epic);
-        epic.setId(temp);
-        epic.setStatus(Status.NEW);
+        if (isValid(epic)) {
+            Integer temp = createId();
+            epics.put(temp, epic);
+            epic.setId(temp);
+            epic.setStatus(Status.NEW);
+            sortedTasks.add(epic);
+        } else {
+            throw new Error("Ошибка! Время выполнения пересекается"+epic);
+        }
     }
 
     @Override
@@ -213,8 +276,14 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public boolean updateEpic(Epic epic) {
         if (epics.containsKey(epic.getId())) {
-            epics.replace(epic.getId(), epic);
-            return true;
+            if (isValid(epic)) {
+                sortedTasks.remove(epics.get(epic.getId()));
+                epics.replace(epic.getId(), epic);
+                sortedTasks.add(epic);
+                return true;
+            } else {
+                throw new Error("Ошибка! Время выполнения пересекается"+epic);
+            }
         } else {
             return false;
         }
@@ -223,6 +292,9 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void deleteEpicAll() {
         managerHistory.removeAll(epics);
+        for(Epic epic:epics.values()){
+            sortedTasks.remove(epic);
+        }
         epics.clear();
         managerHistory.removeAll(subtasks);
         deleteSubtaskAll();
@@ -237,6 +309,7 @@ public class InMemoryTaskManager implements TaskManager {
             }
             epics.remove(id);
             managerHistory.removeById(id);
+            sortedTasks.remove(id);
             return true;
         } else {
             return false;
@@ -287,7 +360,7 @@ public class InMemoryTaskManager implements TaskManager {
                 }
             }
         }
-        if(count>0 && count1>0){
+        if (count > 0 && count1 > 0) {
             epic.setStatus(Status.IN_PROGRESS);
         }
     }

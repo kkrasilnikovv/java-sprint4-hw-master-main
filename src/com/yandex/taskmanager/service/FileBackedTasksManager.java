@@ -8,12 +8,14 @@ import com.yandex.taskmanager.model.Task;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class FileBackedTasksManager extends InMemoryTaskManager implements TaskManager {
     private static final Charset charset = StandardCharsets.UTF_8;
     private static String path;
-    private final String HEAD_FILE = "id,type,name,status,des,epic,start Time,duration,end Time\n";
+    private final String HEAD_FILE = "id,type,name,status,des,epic,startTime,duration\n";
 
     public FileBackedTasksManager(String path) {
         this.path = path;
@@ -141,10 +143,12 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
         save();
         return temp;
     }
+
     @Override
     public Integer getId() {
         return super.getId();
     }
+
     @Override
     public void setId(Integer id) {
         this.id = id;
@@ -183,7 +187,6 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
     }
 
 
-
     public static FileBackedTasksManager loadFromFile(File file) {
         FileBackedTasksManager backedTasksManager = new FileBackedTasksManager(file.getPath());
         boolean flag = false;
@@ -199,66 +202,74 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
                     }
                 } else {
                     if (splitLine[1].equals("Task")) {
-                        Task task = new Task(splitLine[2], splitLine[4], checkStatus(splitLine[3]));
+                        Task task = new Task(splitLine[2], splitLine[4], Status.valueOf(splitLine[3]));
                         task.setId(Integer.parseInt(splitLine[0]));
                         backedTasksManager.tasks.put(task.getId(), task);
+                        backedTasksManager.setPrioritizedTasks(task);
                         if (backedTasksManager.id < task.getId()) {
                             backedTasksManager.id = task.getId();
                         }
                     } else if (splitLine[1].equals("Epic")) {
                         Epic epic = new Epic(splitLine[2], splitLine[4]);
                         epic.setId(Integer.parseInt(splitLine[0]));
-                        epic.setStatus(checkStatus(splitLine[3]));
+                        epic.setStatus(Status.valueOf(splitLine[3]));
                         backedTasksManager.epics.put(epic.getId(), epic);
+                        backedTasksManager.setPrioritizedTasks(epic);
                         if (backedTasksManager.id < epic.getId()) {
                             backedTasksManager.id = epic.getId();
                         }
                     } else if (splitLine[1].equals("Subtask")) {
-                        Subtask subtask = new Subtask(splitLine[2], splitLine[4], checkStatus(splitLine[3]), Integer.parseInt(splitLine[5]));
-                        subtask.setId(Integer.parseInt(splitLine[0]));
-                        if (backedTasksManager.epics.containsKey(subtask.getEpicId())) {
-                            backedTasksManager.subtasks.put(subtask.getId(), subtask);
-                            backedTasksManager.epics.get(subtask.getEpicId()).setIdSubtaskValue(subtask.getId());
-                            if (backedTasksManager.id < subtask.getId()) {
-                                backedTasksManager.id = subtask.getId();
+                        if (splitLine.length == 6) {
+                            Subtask subtask = new Subtask(splitLine[2], splitLine[4], Status.valueOf(splitLine[3]), Integer.parseInt(splitLine[5]));
+                            subtask.setId(Integer.parseInt(splitLine[0]));
+                            if (backedTasksManager.epics.containsKey(subtask.getEpicId())) {
+                                backedTasksManager.subtasks.put(subtask.getId(), subtask);
+                                backedTasksManager.epics.get(subtask.getEpicId()).setIdSubtaskValue(subtask.getId());
+                                backedTasksManager.setPrioritizedTasks(subtask);
+                                if (backedTasksManager.id < subtask.getId()) {
+                                    backedTasksManager.id = subtask.getId();
+                                }
+                            }
+                        } else { //"id,type,name,status,des,epic,startTime,duration\n"
+                            Subtask subtask = new Subtask(splitLine[2], splitLine[4], Status.valueOf(splitLine[3]), Integer.parseInt(splitLine[5]));
+                            subtask.setId(Integer.parseInt(splitLine[0]));
+                            subtask.setDuration(Duration.parse(splitLine[7]));
+                            subtask.setStartTime(LocalDateTime.parse(splitLine[6]));
+                            if (backedTasksManager.epics.containsKey(subtask.getEpicId())) {
+                                backedTasksManager.subtasks.put(subtask.getId(), subtask);
+                                backedTasksManager.epics.get(subtask.getEpicId()).setIdSubtaskValue(subtask.getId());
+                                backedTasksManager.setPrioritizedTasks(subtask);
+                                backedTasksManager.getEndTime(backedTasksManager.epics.get(subtask.getEpicId()));
+                                if (backedTasksManager.id < subtask.getId()) {
+                                    backedTasksManager.id = subtask.getId();
+                                }
                             }
                         }
                     }
                 }
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch(IOException e){
+                e.printStackTrace();
+            }
+            return backedTasksManager;
         }
-        return backedTasksManager;
-    }
 
-    private Task getAnyTask(int id) {
-        Task task = super.getTaskId(id);
-        if (task != null) {
-            return task;
+        private Task getAnyTask ( int id){
+            Task task = super.getTaskId(id);
+            if (task != null) {
+                return task;
+            }
+            task = super.getEpicById(id);
+            if (task != null) {
+                return task;
+            }
+            return super.getSubtaskId(id);
         }
-        task = super.getEpicById(id);
-        if (task != null) {
-            return task;
-        }
-        return super.getSubtaskId(id);
-    }
 
-    private static Status checkStatus(String str) {
-        if (str.equals("NEW")) {
-            return Status.NEW;
-        } else if (str.equals("IN_PROGRESS")) {
-            return Status.IN_PROGRESS;
-        } else if (str.equals("DONE")) {
-            return Status.DONE;
-        } else
-            return null;
-    }
-
-    public static void main(String[] args) {
-        FileBackedTasksManager managerDefault = Managers.getDefaultFileBackedManager("C:\\Users\\Иван\\" +
-                "Desktop\\bootFile.txt");
+        public static void main (String[]args){
+            FileBackedTasksManager managerDefault = Managers.getDefaultFileBackedManager("C:\\Users\\Иван\\" +
+                    "Desktop\\bootFile.txt");
         /*Task task = new Task("ТЗ 3", "Сделать Яндекс.Практикум", Status.NEW);
         Task task1 = new Task("Домашка", "Сделать дз по русскому языку", Status.NEW);
         Epic epic = new Epic("Переезд", "Переезд в новую квартиру");
@@ -282,13 +293,13 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
         managerDefault.getSubtaskId(5);
         managerDefault.getSubtaskId(6);
         managerDefault.getEpicById(7);*/
-        File file = new File("resources/History.txt");
-        TaskManager loadManager = loadFromFile(file);
-        Task task2 = new Task("Проверка id", "Проверка нового метода", Status.NEW);
-        loadManager.moveTask(task2);
+            File file = new File("resources/History.txt");
+            TaskManager loadManager = loadFromFile(file);
+            Task task2 = new Task("Проверка id", "Проверка нового метода", Status.NEW);
+            loadManager.moveTask(task2);
 
-        System.out.println(loadManager.getTaskAll());
+            System.out.println(loadManager.getTaskAll());
+
+        }
 
     }
-
-}

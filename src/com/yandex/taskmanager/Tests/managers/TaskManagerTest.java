@@ -108,7 +108,7 @@ abstract class TaskManagerTest<T extends TaskManager> {
 
     @Test
     public void shouldBeNullWhenGetNumberNotHaveManager() {
-        assertEquals(null, manager.getTaskId(14));
+        assertNull(manager.getTaskId(14));
     }
 
     @Test
@@ -116,7 +116,7 @@ abstract class TaskManagerTest<T extends TaskManager> {
         Task task = new Task("Name", "Des", Status.NEW);
         manager.moveTask(task);
         manager.deleteTaskById(1);
-        assertEquals(null, manager.getTaskId(1));
+        assertNull(manager.getTaskId(1));
     }
 
     @Test
@@ -128,7 +128,7 @@ abstract class TaskManagerTest<T extends TaskManager> {
     @Test
     public void shouldBeNullWhenCheckEndTimeWithEmptySubtasks() {
         Epic epic = new Epic("EpicName", "EpicDes");
-        assertEquals(null, epic.getEndTime());
+        assertNull(epic.getEndTime());
     }
 
     @Test
@@ -169,6 +169,7 @@ abstract class TaskManagerTest<T extends TaskManager> {
                 "08.05.2022 05:00", Status.NEW, 1);
         Subtask three =new Subtask("name3", "des3", 20,
                 "06.05.2022 05:00", Status.NEW, 1);
+
         manager.moveSubtask(one);
         manager.moveSubtask(two);
         manager.moveSubtask(three);

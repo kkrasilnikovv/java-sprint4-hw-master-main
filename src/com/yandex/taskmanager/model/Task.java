@@ -4,6 +4,7 @@ package com.yandex.taskmanager.model;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class Task {
     private Status status;
@@ -87,5 +88,20 @@ public class Task {
     public String toString() {
         return String.valueOf(id) + ',' + type + ',' + name + ',' +
                 status + ',' + description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return status == task.status && Objects.equals(name, task.name) && Objects.equals(type, task.type) &&
+                Objects.equals(description, task.description) && Objects.equals(id, task.id) &&
+                Objects.equals(duration, task.duration) && Objects.equals(startTime, task.startTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(status, name, type, description, id, duration, startTime);
     }
 }

@@ -7,12 +7,14 @@ import com.yandex.taskmanager.model.Task;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.TreeSet;
 
 
 public interface TaskManager {
+    public boolean isValid(Task task);
     public LocalDateTime getEndTime(Epic epic);
-    public TreeSet<Task> getPrioritizedTasks();
+    public Set getPrioritizedTasks();
     public void moveTask(Task task);
 
     public ArrayList<Task> getTaskAll();

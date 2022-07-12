@@ -145,7 +145,7 @@ abstract class TaskManagerTest<T extends TaskManager> {
     @Test
     public void shouldBeNullWhenCheckEndTimeWithEmptySubtasks() {
         Epic epic = new Epic("EpicName", "EpicDes");
-        assertNull(epic.getFinishTime());
+        assertNull(epic.getEndTime());
     }
 
     @Test
@@ -155,7 +155,7 @@ abstract class TaskManagerTest<T extends TaskManager> {
         Subtask one = new Subtask("name1", "des1", 60,
                 "06.05.2022 05:00", Status.NEW, 1);
         manager.moveSubtask(one);
-        assertEquals("06.05.2022 06:00", epic.getFinishTime().format(epic.getFormatter()));
+        assertEquals("06.05.2022 06:00", epic.getEndTime().format(epic.getFormatter()));
     }
 
     @Test
@@ -171,7 +171,7 @@ abstract class TaskManagerTest<T extends TaskManager> {
         manager.moveSubtask(one);
         manager.moveSubtask(two);
         manager.moveSubtask(three);
-        assertEquals("06.05.2022 07:20", epic.getFinishTime().format(epic.getFormatter()));
+        assertEquals("06.05.2022 07:20", epic.getEndTime().format(epic.getFormatter()));
     }
 
     @Test
@@ -188,7 +188,7 @@ abstract class TaskManagerTest<T extends TaskManager> {
         manager.moveSubtask(one);
         manager.moveSubtask(two);
         manager.moveSubtask(three);
-        assertEquals("07.05.2022 07:20", epic.getFinishTime().format(epic.getFormatter()));
+        assertEquals("07.05.2022 07:20", epic.getEndTime().format(epic.getFormatter()));
     }
 
 

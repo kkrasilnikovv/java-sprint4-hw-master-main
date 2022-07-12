@@ -19,9 +19,10 @@ class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksManager>
     private File file;
     @BeforeEach
     public void createManager() {
-        super.manager = Managers.getDefaultFileBackedManager("resources/History.txt");
-        file =new File("resources/History.txt");
+        super.manager = Managers.getDefaultFileBackedManager("C:\\Users\\Иван\\Desktop\\text.txt");
+        file =new File("C:\\Users\\Иван\\Desktop\\text.txt");
     }
+    //"resources/History.txt"
     @AfterEach
     public void remove() {
         assertTrue(file.delete());
@@ -74,6 +75,7 @@ class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksManager>
     }
     @Test
     public void shouldBeWhenSaveAndSortedList() {
+
         Task one=new Task("name1", "des1", 20,
                 "07.05.2022 05:00", Status.NEW);
         Task two =new Task("name2", "des2", 20,

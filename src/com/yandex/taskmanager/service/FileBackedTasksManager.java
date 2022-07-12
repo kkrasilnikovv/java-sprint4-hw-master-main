@@ -202,43 +202,72 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
                     }
                 } else {
                     if (splitLine[1].equals("TASK")) {
-                        Task task = new Task(splitLine[2], splitLine[4], Status.valueOf(splitLine[3]));
-                        task.setId(Integer.parseInt(splitLine[0]));
-                        backedTasksManager.tasks.put(task.getId(), task);
-                        backedTasksManager.setPrioritizedTasks(task);
-                        if (backedTasksManager.id < task.getId()) {
-                            backedTasksManager.id = task.getId();
+                        //0    1    2     3     4   5     6         7
+                        //"id,type,name,status,des,epic,startTime,duration\n"
+                        //  0                   1        2    3        4          5          6        7
+                        //String.valueOf(id)  getType() name status  description startTime duration epic;
+                        if (splitLine.length == 2) {
+                            Task task = new Task(splitLine[2],splitLine[4]);
+                            task.setStatus(Status.valueOf(splitLine[3]));
+                            task.setId(Integer.parseInt(splitLine[0]));
+                            backedTasksManager.tasks.put(task.getId(), task);
+                            backedTasksManager.addPrioritizedTasks(task);
+                            if (backedTasksManager.id < task.getId()) {
+                                backedTasksManager.id = task.getId();
+                            }
+                        }else {
+                            Task task = new Task(splitLine[2], splitLine[4], Status.valueOf(splitLine[3]));
+                            task.setId(Integer.parseInt(splitLine[0]));
+                            if(!splitLine[6].equals("null")){
+                            task.setDuration(Duration.parse(splitLine[6]));
+                            }
+                            if(!splitLine[5].equals("null")){
+                                task.setStartTime(LocalDateTime.parse(splitLine[5]));
+                            }
+
+                            backedTasksManager.tasks.put(task.getId(), task);
+                            backedTasksManager.addPrioritizedTasks(task);
+                            if (backedTasksManager.id < task.getId()) {
+                                backedTasksManager.id = task.getId();
+                            }
                         }
                     } else if (splitLine[1].equals("EPIC")) {
                         Epic epic = new Epic(splitLine[2], splitLine[4]);
                         epic.setId(Integer.parseInt(splitLine[0]));
                         epic.setStatus(Status.valueOf(splitLine[3]));
                         backedTasksManager.epics.put(epic.getId(), epic);
-                        backedTasksManager.setPrioritizedTasks(epic);
+                        backedTasksManager.addPrioritizedTasks(epic);
                         if (backedTasksManager.id < epic.getId()) {
                             backedTasksManager.id = epic.getId();
                         }
                     } else if (splitLine[1].equals("SUBTASK")) {
-                        if (splitLine.length == 6) {
-                            Subtask subtask = new Subtask(splitLine[2], splitLine[4], Status.valueOf(splitLine[3]), Integer.parseInt(splitLine[5]));
+                        if (splitLine.length != 8) {
+                            Subtask subtask = new Subtask(splitLine[2], splitLine[4], Status.valueOf(splitLine[3]),
+                                    Integer.parseInt(splitLine[5]));
                             subtask.setId(Integer.parseInt(splitLine[0]));
                             if (backedTasksManager.epics.containsKey(subtask.getEpicId())) {
                                 backedTasksManager.subtasks.put(subtask.getId(), subtask);
                                 backedTasksManager.epics.get(subtask.getEpicId()).setIdSubtaskValue(subtask.getId());
-                                backedTasksManager.setPrioritizedTasks(subtask);
+                                backedTasksManager.addPrioritizedTasks(subtask);
                                 if (backedTasksManager.id < subtask.getId()) {
                                     backedTasksManager.id = subtask.getId();
                                 }
                             }
-                        } else { //"id,type,name,status,des,epic,startTime,duration\n"
-                            Subtask subtask = new Subtask(splitLine[2], splitLine[4], Status.valueOf(splitLine[3]), Integer.parseInt(splitLine[5]));
+                        } else {
+                            Subtask subtask = new Subtask(splitLine[2], splitLine[4], Status.valueOf(splitLine[3]),
+                                    Integer.parseInt(splitLine[7]));
                             subtask.setId(Integer.parseInt(splitLine[0]));
-                            subtask.setDuration(Duration.parse(splitLine[7]));
-                            subtask.setStartTime(LocalDateTime.parse(splitLine[6]));
+                            if(!splitLine[6].equals("null")){
+                                subtask.setDuration(Duration.parse(splitLine[6]));
+                            }
+                            if(!splitLine[5].equals("null")){
+                                subtask.setStartTime(LocalDateTime.parse(splitLine[5]));
+                            }
+
                             if (backedTasksManager.epics.containsKey(subtask.getEpicId())) {
                                 backedTasksManager.subtasks.put(subtask.getId(), subtask);
                                 backedTasksManager.epics.get(subtask.getEpicId()).setIdSubtaskValue(subtask.getId());
-                                backedTasksManager.setPrioritizedTasks(subtask);
+                                backedTasksManager.addPrioritizedTasks(subtask);
                                 backedTasksManager.getEndTime(backedTasksManager.epics.get(subtask.getEpicId()));
                                 if (backedTasksManager.id < subtask.getId()) {
                                     backedTasksManager.id = subtask.getId();

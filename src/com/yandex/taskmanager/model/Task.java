@@ -9,7 +9,6 @@ import java.util.Objects;
 public class Task {
     private Status status;
     private final String name;
-    private TypeTask type = TypeTask.TASK;
     private final String description;
     private Integer id;
     private Duration duration;
@@ -83,31 +82,29 @@ public class Task {
 
     }
     public TypeTask getType(){
-        return type;
+        return TypeTask.TASK;
     }
 
-    public void setType(TypeTask type) {
-        this.type = type;
-    }
 
     @Override
     public String toString() {
-        return String.valueOf(id) + ',' + type + ',' + name + ',' +
-                status + ',' + description;
+        return String.valueOf(id) + ',' + getType() + ',' + name + ',' +
+                status + ',' + description+ ','+startTime+','+duration;
     }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return status == task.status && Objects.equals(name, task.name) && Objects.equals(type, task.type) &&
-                Objects.equals(description, task.description) && Objects.equals(id, task.id) &&
-                Objects.equals(duration, task.duration) && Objects.equals(startTime, task.startTime);
+        return status == task.status && Objects.equals(name, task.name) && Objects.equals(description, task.description)
+                && Objects.equals(id, task.id) && Objects.equals(duration, task.duration) &&
+                Objects.equals(startTime, task.startTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(status, name, type, description, id, duration, startTime);
+        return Objects.hash(status, name, description, id, duration, startTime);
     }
 }

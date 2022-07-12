@@ -201,7 +201,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
                         backedTasksManager.getAnyTask(Integer.parseInt(numb));
                     }
                 } else {
-                    if (splitLine[1].equals("Task")) {
+                    if (splitLine[1].equals("TASK")) {
                         Task task = new Task(splitLine[2], splitLine[4], Status.valueOf(splitLine[3]));
                         task.setId(Integer.parseInt(splitLine[0]));
                         backedTasksManager.tasks.put(task.getId(), task);
@@ -209,7 +209,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
                         if (backedTasksManager.id < task.getId()) {
                             backedTasksManager.id = task.getId();
                         }
-                    } else if (splitLine[1].equals("Epic")) {
+                    } else if (splitLine[1].equals("EPIC")) {
                         Epic epic = new Epic(splitLine[2], splitLine[4]);
                         epic.setId(Integer.parseInt(splitLine[0]));
                         epic.setStatus(Status.valueOf(splitLine[3]));
@@ -218,7 +218,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
                         if (backedTasksManager.id < epic.getId()) {
                             backedTasksManager.id = epic.getId();
                         }
-                    } else if (splitLine[1].equals("Subtask")) {
+                    } else if (splitLine[1].equals("SUBTASK")) {
                         if (splitLine.length == 6) {
                             Subtask subtask = new Subtask(splitLine[2], splitLine[4], Status.valueOf(splitLine[3]), Integer.parseInt(splitLine[5]));
                             subtask.setId(Integer.parseInt(splitLine[0]));
@@ -268,8 +268,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
         }
 
         public static void main (String[]args){
-            FileBackedTasksManager managerDefault = Managers.getDefaultFileBackedManager("C:\\Users\\Иван\\" +
-                    "Desktop\\bootFile.txt");
+            FileBackedTasksManager managerDefault = Managers.getDefaultFileBackedManager("resources/History.txt");
         /*Task task = new Task("ТЗ 3", "Сделать Яндекс.Практикум", Status.NEW);
         Task task1 = new Task("Домашка", "Сделать дз по русскому языку", Status.NEW);
         Epic epic = new Epic("Переезд", "Переезд в новую квартиру");

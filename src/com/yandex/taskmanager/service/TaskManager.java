@@ -13,7 +13,7 @@ import java.util.TreeSet;
 
 public interface TaskManager {
     public boolean isValid(Task task);
-    public LocalDateTime getEndTime(Epic epic);
+    public void getEndTime(Epic epic);
     public Set getPrioritizedTasks();
     public void moveTask(Task task);
 

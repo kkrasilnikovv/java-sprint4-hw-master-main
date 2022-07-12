@@ -6,9 +6,13 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Epic extends Task {
+    private final TypeTask type = TypeTask.EPIC;
+    private LocalDateTime finishTime;
+
+
     public Epic(String name, String description) {
         super(name, description);
-        type="Epic";
+        super.setType(type);
     }
 
 
@@ -38,6 +42,17 @@ public class Epic extends Task {
     public LocalDateTime getStartTime(LocalDateTime startTime) {
         getEndTime();
         return super.getStartTime();
+    }
+    public LocalDateTime getFinishTime() {
+        return finishTime;
+    }
+
+    public void setFinishTime(LocalDateTime finishTime) {
+        this.finishTime = finishTime;
+    }
+    @Override
+    public TypeTask getType(){
+        return type;
     }
     @Override
     public boolean equals(Object o) {

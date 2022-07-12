@@ -7,6 +7,7 @@ import com.yandex.taskmanager.model.Subtask;
 import com.yandex.taskmanager.model.Task;
 import com.yandex.taskmanager.service.FileBackedTasksManager;
 import com.yandex.taskmanager.service.Managers;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,19 +15,23 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
-
 class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksManager> {
+    private File file;
     @BeforeEach
     public void createManager() {
-        super.manager = Managers.getDefaultFileBackedManager("C:\\Users\\Иван\\Desktop\\text.txt");
+        super.manager = Managers.getDefaultFileBackedManager("resources/History.txt");
+        file =new File("resources/History.txt");
+    }
+    @AfterEach
+    public void remove() {
+        assertTrue(file.delete());
     }
 //"resources/History.txt"
     @Test
     public void shouldBeEmptyWhenSaveEmptyAndLoadEmptyTasks() {
         manager.deleteTaskAll();
         manager.deleteEpicAll();
-        FileBackedTasksManager load = FileBackedTasksManager.loadFromFile(
-                new File("C:\\Users\\Иван\\Desktop\\text.txt"));
+        FileBackedTasksManager load = FileBackedTasksManager.loadFromFile(file);
         assertTrue(load.getTaskAll().isEmpty() && load.getEpicAll().isEmpty());
     }
 
@@ -35,14 +40,14 @@ class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksManager>
         manager.deleteEpicAll();
         manager.deleteSubtaskAll();
         manager.deleteTaskAll();
-        Epic epicTest = new Epic("Name", "desc");
+        Epic epicTest = new Epic("NameEpic", "desc");
         manager.moveEpic(epicTest);
-        Subtask subtaskTest=new Subtask("Name","desc", Status.NEW,1);
+        Subtask subtaskTest = new Subtask("name1", "des1", 60,
+                "06.05.2022 05:00", Status.NEW, 1);
         manager.moveSubtask(subtaskTest);
-        Task taskTest=new Task("Name","desc",Status.NEW);
+        Task taskTest=new Task("NameTask","desc",Status.NEW);
         manager.moveTask(taskTest);
-        FileBackedTasksManager load = FileBackedTasksManager.loadFromFile(
-                new File("C:\\Users\\Иван\\Desktop\\text.txt"));
+        FileBackedTasksManager load = FileBackedTasksManager.loadFromFile(file);
         assertEquals(epicTest, load.getEpicById(1));
         assertEquals(subtaskTest, load.getSubtaskId(2));
         assertEquals(taskTest,load.getTaskId(3));
@@ -54,8 +59,7 @@ class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksManager>
         manager.deleteSubtaskAll();
         manager.deleteTaskAll();
         manager.deleteEpicAll();
-        FileBackedTasksManager load = FileBackedTasksManager.loadFromFile(
-                new File("C:\\Users\\Иван\\Desktop\\text.txt"));
+        FileBackedTasksManager load = FileBackedTasksManager.loadFromFile(file);
         assertEquals(0, load.getHistory().size());
     }
 
@@ -65,8 +69,7 @@ class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksManager>
         manager.moveTask(taskTest);
         List<Task> temp=new ArrayList<>();
         temp.add(manager.getTaskId(1));
-        FileBackedTasksManager load = FileBackedTasksManager.loadFromFile(
-                new File("C:\\Users\\Иван\\Desktop\\text.txt"));
+        FileBackedTasksManager load = FileBackedTasksManager.loadFromFile(file);
         assertEquals(temp,load.getHistory());
     }
     @Test
@@ -83,8 +86,7 @@ class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksManager>
         manager.moveTask(three);
 
 
-        FileBackedTasksManager load = FileBackedTasksManager.loadFromFile(
-                new File("C:\\Users\\Иван\\Desktop\\text.txt"));
+        FileBackedTasksManager load = FileBackedTasksManager.loadFromFile(file);
         assertEquals(manager.getPrioritizedTasks(),load.getPrioritizedTasks());
     }
 

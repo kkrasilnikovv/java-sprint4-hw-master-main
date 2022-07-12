@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="82833545-bf10-46a4-8893-ced22816a23b" name="Changes" comment="Первое ревью 7 спринта">
+    <list default="true" id="82833545-bf10-46a4-8893-ced22816a23b" name="Changes" comment="Правки после ревью">
+      <change afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/model/TypeTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/ValidationException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/FileBackedTasksManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/FileBackedTasksManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/TaskManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/TaskManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/model/Epic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/model/Epic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/model/Subtask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/model/Subtask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/model/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/FileBackedTasksManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/FileBackedTasksManager.java" afterDir="false" />
@@ -21,8 +24,8 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -46,14 +49,15 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "last_opened_file_path": "C:/Users/Иван/Desktop/dima",
+    "last_opened_file_path": "C:/Users/Иван/IdeaProjects/java-sprint4-hw-master-main",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "preferences.editor"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -107,7 +111,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HistoryManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FileBackedTasksManagerTest.shouldBeWhenSaveAndLoadHistory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-sprint3-hw" />
       <extension name="coverage">
         <pattern>
@@ -116,8 +120,9 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.yandex.taskmanager.Tests.managers" />
-      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.HistoryManagerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.FileBackedTasksManagerTest" />
+      <option name="METHOD_NAME" value="shouldBeWhenSaveAndLoadHistory" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -137,7 +142,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InMemoryTaskManagerTest.shouldBeHave60MinutesDurationEpicWithOneSubtask" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InMemoryTaskManagerTest.shouldBeErrorValidation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-sprint3-hw" />
       <extension name="coverage">
         <pattern>
@@ -147,7 +152,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.yandex.taskmanager.Tests.managers" />
       <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.InMemoryTaskManagerTest" />
-      <option name="METHOD_NAME" value="shouldBeHave60MinutesDurationEpicWithOneSubtask" />
+      <option name="METHOD_NAME" value="shouldBeErrorValidation" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -156,10 +161,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.FileBackedTasksManagerTest" />
-        <item itemvalue="JUnit.FileBackedTasksManagerTest.shouldBeEpicTaskSubtaskInLoadFile" />
         <item itemvalue="JUnit.InMemoryTaskManagerTest" />
         <item itemvalue="JUnit.InMemoryTaskManagerTest" />
-        <item itemvalue="JUnit.HistoryManagerTest" />
+        <item itemvalue="JUnit.InMemoryTaskManagerTest.shouldBeErrorValidation" />
+        <item itemvalue="JUnit.InMemoryTaskManagerTest.shouldBeErrorValidation" />
       </list>
     </recent_temporary>
   </component>
@@ -171,6 +176,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1651319831648</updated>
+      <workItem from="1657625215843" duration="4915000" />
     </task>
     <task id="LOCAL-00001" summary="Программа исправна работает на поверхностных тестах.">
       <created>1651672214532</created>
@@ -347,8 +353,18 @@
       <option name="project" value="LOCAL" />
       <updated>1657312011532</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Правки после ревью">
+      <created>1657480654095</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1657480654095</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -377,20 +393,26 @@
     <MESSAGE value="Исправлена ошибки 1 ревью" />
     <MESSAGE value="Исправлена ошибки 2 ревью, необходимо доделать проблему с новым id" />
     <MESSAGE value="Первое ревью 7 спринта" />
-    <option name="LAST_COMMIT_MESSAGE" value="Первое ревью 7 спринта" />
+    <MESSAGE value="Правки после ревью" />
+    <option name="LAST_COMMIT_MESSAGE" value="Правки после ревью" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/FileBackedTasksManagerTest.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="29" />
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/TaskManagerTest.java</url>
+          <line>173</line>
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/FileBackedTasksManagerTest.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="30" />
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/TaskManagerTest.java</url>
+          <line>190</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/TaskManagerTest.java</url>
+          <line>178</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Task {
     private Status status;
     private final String name;
-    protected String type;
+    private TypeTask type = TypeTask.TASK;
     private final String description;
     private Integer id;
     private Duration duration;
@@ -28,20 +28,17 @@ public class Task {
         this.name = name;
         this.description = description;
         this.status = status;
-        type = "Task";
     }
 
     public Task(String name, String description) {
         this.name = name;
         this.description = description;
         status=Status.NEW;
-        type = "Task";
     }
     public Task(String name, String description, long durationInMinutes, String starTime,Status status) {
         this.name = name;
         this.description = description;
         this.status = status;
-        type = "Task";
         this.duration = Duration.ofMinutes(durationInMinutes);
         this.startTime = LocalDateTime.parse(starTime, FORMATTER);
     }
@@ -70,18 +67,27 @@ public class Task {
     }
 
     public void setDuration(Duration duration) {
+
         this.duration = duration;
+
     }
     public LocalDateTime getStartTime(LocalDateTime startTime) {
         return startTime;
     }
     public LocalDateTime getEndTime() {
-        if (startTime != null && duration != null) {
+        if (startTime != null && duration!=null) {
             return startTime.plus(duration);
         } else {
             return null;
         }
 
+    }
+    public TypeTask getType(){
+        return type;
+    }
+
+    public void setType(TypeTask type) {
+        this.type = type;
     }
 
     @Override

@@ -5,10 +5,7 @@ import com.yandex.taskmanager.model.Subtask;
 import com.yandex.taskmanager.model.Task;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 
 public interface TaskManager {
@@ -59,6 +56,9 @@ public interface TaskManager {
     public Integer createId();
 
     public void checkStatusEpic(Epic epic);
+    public Map<Integer, Task> getTasks();
+    public Map<Integer, Epic> getEpics();
+    public Map<Integer, Subtask> getSubtask();
 
     public List<Task> getHistory();
 }

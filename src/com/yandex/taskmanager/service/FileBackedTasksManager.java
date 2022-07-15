@@ -295,39 +295,4 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
             }
             return super.getSubtaskId(id);
         }
-
-        public static void main (String[]args){
-            FileBackedTasksManager managerDefault = Managers.getDefaultFileBackedManager("resources/History.txt");
-        /*Task task = new Task("ТЗ 3", "Сделать Яндекс.Практикум", Status.NEW);
-        Task task1 = new Task("Домашка", "Сделать дз по русскому языку", Status.NEW);
-        Epic epic = new Epic("Переезд", "Переезд в новую квартиру");
-        Subtask subtask = new Subtask("Купить обои", "Обои для гостиной", Status.NEW, 3);
-        Subtask subtask1 = new Subtask("Купить клей", "Клей для обоев", Status.NEW, 3);
-        Epic epic1 = new Epic("Устроиться на работу", "Стать java разработчиком");
-        Subtask subtask2 = new Subtask("Закончить курсы", "Успешно окончить курсы яндекс",
-                Status.NEW, 3);
-        managerDefault.moveTask(task);
-        managerDefault.moveTask(task1);
-        managerDefault.moveEpic(epic);
-        managerDefault.moveSubtask(subtask);
-        managerDefault.moveSubtask(subtask1);
-        managerDefault.moveSubtask(subtask2);
-        managerDefault.moveEpic(epic1);
-
-        managerDefault.getTaskId(1);
-        managerDefault.getTaskId(2);
-        managerDefault.getEpicById(3);
-        managerDefault.getSubtaskId(4);
-        managerDefault.getSubtaskId(5);
-        managerDefault.getSubtaskId(6);
-        managerDefault.getEpicById(7);*/
-            File file = new File("resources/History.txt");
-            TaskManager loadManager = loadFromFile(file);
-            Task task2 = new Task("Проверка id", "Проверка нового метода", Status.NEW);
-            loadManager.moveTask(task2);
-
-            System.out.println(loadManager.getTaskAll());
-
-        }
-
     }

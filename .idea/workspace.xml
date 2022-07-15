@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="82833545-bf10-46a4-8893-ced22816a23b" name="Changes" comment="Правки после 2 ревью">
+    <list default="true" id="82833545-bf10-46a4-8893-ced22816a23b" name="Changes" comment="Правки после 3 ревью">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/google_code_gson.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HTTPTaskManagerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/api/KVServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/api/KVTaskClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/HTTPTaskManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/FileBackedTasksManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/FileBackedTasksManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/TaskManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/TaskManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/model/Epic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/model/Epic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/model/Subtask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/model/Subtask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/model/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-sprint3-hw.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java-sprint3-hw.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HistoryManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HistoryManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/tasks/EpicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/tasks/EpicTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/FileBackedTasksManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/FileBackedTasksManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/InMemoryTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/InMemoryTaskManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/Managers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/Managers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/TaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/TaskManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,19 +53,21 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "last_opened_file_path": "C:/Users/Иван/IdeaProjects/java-sprint4-hw-master-main",
-    "project.structure.last.edited": "Modules",
+    "last_opened_file_path": "C:/Users/Иван/IdeaProjects/java-sprint4-hw-master-main/src/com/yandex/taskmanager/api",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.editor"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Иван\IdeaProjects\java-sprint4-hw-master-main\src\com\yandex\taskmanager\api" />
       <recent name="C:\Users\Иван\IdeaProjects\java-sprint4-hw-master-main\src\resources" />
       <recent name="C:\Users\Иван\IdeaProjects\java-sprint4-hw-master-main\src" />
       <recent name="C:\Users\Иван\IdeaProjects\java-sprint4-hw-master-main\src\Tests\backend.managers" />
@@ -75,9 +84,39 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.yandex.taskmanager.model" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yandex.taskmanager.Tests.managers" />
+      <recent name="com.yandex.taskmanager.service" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.InMemoryTaskManagerTest">
-    <configuration name="FileBackedTasksManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.HTTPTaskManagerTest">
+    <configuration name="HTTPTaskManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.service.HTTPTaskManager" />
+      <module name="java-sprint3-hw" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yandex.taskmanager.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Main" />
+      <module name="java-sprint3-hw" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yandex.taskmanager.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HTTPTaskManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-sprint3-hw" />
       <extension name="coverage">
         <pattern>
@@ -86,40 +125,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.yandex.taskmanager.Tests.managers" />
-      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.FileBackedTasksManagerTest" />
+      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.HTTPTaskManagerTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FileBackedTasksManagerTest.shouldBeEpicTaskSubtaskInLoadFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java-sprint3-hw" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.yandex.taskmanager.Tests.managers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.yandex.taskmanager.Tests.managers" />
-      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.FileBackedTasksManagerTest" />
-      <option name="METHOD_NAME" value="shouldBeEpicTaskSubtaskInLoadFile" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FileBackedTasksManagerTest.shouldBeWhenSaveAndSortedList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java-sprint3-hw" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.yandex.taskmanager.Tests.managers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.yandex.taskmanager.Tests.managers" />
-      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.FileBackedTasksManagerTest" />
-      <option name="METHOD_NAME" value="shouldBeWhenSaveAndSortedList" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -156,11 +163,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HTTPTaskManagerTest" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.HTTPTaskManager" />
         <item itemvalue="JUnit.InMemoryTaskManagerTest" />
         <item itemvalue="JUnit.InMemoryTaskManagerTest" />
-        <item itemvalue="JUnit.HistoryManagerTest" />
-        <item itemvalue="JUnit.FileBackedTasksManagerTest" />
-        <item itemvalue="JUnit.FileBackedTasksManagerTest.shouldBeWhenSaveAndSortedList" />
       </list>
     </recent_temporary>
   </component>
@@ -172,7 +179,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1651319831648</updated>
-      <workItem from="1657625215843" duration="13149000" />
+      <workItem from="1657625215843" duration="13655000" />
+      <workItem from="1657699072096" duration="10000" />
+      <workItem from="1657881850716" duration="8162000" />
     </task>
     <task id="LOCAL-00001" summary="Программа исправна работает на поверхностных тестах.">
       <created>1651672214532</created>
@@ -363,7 +372,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657632880195</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Правки после 3 ревью">
+      <created>1657656810189</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1657656810189</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,7 +414,8 @@
     <MESSAGE value="Первое ревью 7 спринта" />
     <MESSAGE value="Правки после ревью" />
     <MESSAGE value="Правки после 2 ревью" />
-    <option name="LAST_COMMIT_MESSAGE" value="Правки после 2 ревью" />
+    <MESSAGE value="Правки после 3 ревью" />
+    <option name="LAST_COMMIT_MESSAGE" value="Правки после 3 ревью" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -412,6 +429,25 @@
           <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/FileBackedTasksManagerTest.java</url>
           <line>53</line>
           <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HTTPTaskManagerTest.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HTTPTaskManagerTest.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/KVServer.java</url>
+          <line>94</line>
+          <properties class="com.yandex.taskmanager.api.KVServer" method="start">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="62" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

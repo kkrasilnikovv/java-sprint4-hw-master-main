@@ -1,11 +1,11 @@
 package com.yandex.taskmanager.service;
 
 
+import java.io.IOException;
 
 public class Managers{
-    public static TaskManager getDefault(){
-        InMemoryTaskManager inMemoryTaskManager = new InMemoryTaskManager();
-        return inMemoryTaskManager;
+    public static HTTPTaskManager getDefault() throws IOException, InterruptedException {
+        return new HTTPTaskManager("http://localhost:8070/");
     }
     public static HistoryManager getDefaultHistory(){
         InMemoryHistoryManager inMemoryHistoryManager=new InMemoryHistoryManager();

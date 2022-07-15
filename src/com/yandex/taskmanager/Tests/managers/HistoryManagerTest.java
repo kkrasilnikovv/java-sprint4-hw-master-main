@@ -4,6 +4,7 @@ package com.yandex.taskmanager.Tests.managers;
 import com.yandex.taskmanager.model.Status;
 import com.yandex.taskmanager.model.Task;
 import com.yandex.taskmanager.service.HistoryManager;
+import com.yandex.taskmanager.service.InMemoryTaskManager;
 import com.yandex.taskmanager.service.Managers;
 import com.yandex.taskmanager.service.TaskManager;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +19,7 @@ class HistoryManagerTest {
     @BeforeEach
     public void createHistoryManager() {
         managerHistory = Managers.getDefaultHistory();
-        managerTask=Managers.getDefault();
+        managerTask=new InMemoryTaskManager();
     }
 
     @Test

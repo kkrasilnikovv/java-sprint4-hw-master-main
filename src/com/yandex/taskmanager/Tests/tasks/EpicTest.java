@@ -3,6 +3,7 @@ package com.yandex.taskmanager.Tests.tasks;
 import com.yandex.taskmanager.model.Epic;
 import com.yandex.taskmanager.model.Status;
 import com.yandex.taskmanager.model.Subtask;
+import com.yandex.taskmanager.service.InMemoryTaskManager;
 import com.yandex.taskmanager.service.Managers;
 import com.yandex.taskmanager.service.TaskManager;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +23,7 @@ class EpicTest {
     @BeforeEach
     public void createTaskManager() {
         epic = new Epic("Name", "Descrip");
-        manager=Managers.getDefault();
+        manager=new InMemoryTaskManager();
         manager.moveEpic(epic);
     }
 

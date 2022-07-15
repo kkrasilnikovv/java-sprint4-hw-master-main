@@ -32,13 +32,11 @@ public class Epic extends Task {
 
     @Override
     public Duration getDuration() {
-        getEndTime();
         return super.getDuration();
     }
 
     @Override
     public LocalDateTime getStartTime(LocalDateTime startTime) {
-        getEndTime();
         return super.getStartTime();
     }
     @Override

@@ -76,10 +76,10 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void getEndTime(Epic epic) {
+        epic.setStartTime(LocalDateTime.MAX);
+        epic.setDuration(Duration.ofMinutes(0));
+        epic.setEndTime(LocalDateTime.MIN);
         if (epic.getIdSubtask().size() != 0) {
-            epic.setStartTime(LocalDateTime.MAX);
-            epic.setDuration(Duration.ofMinutes(0));
-            epic.setEndTime(LocalDateTime.MIN);
             for (Integer integer : epic.getIdSubtask()) {
                 if (subtasks.get(integer).getStartTime() == null || subtasks.get(integer).getDuration() == null) {
                     continue;
@@ -102,7 +102,11 @@ public class InMemoryTaskManager implements TaskManager {
                 }
             }
         }
-
+        if (epic.getEndTime().equals(LocalDateTime.MIN) || epic.getStartTime().equals(LocalDateTime.MAX)) {
+            epic.setStartTime(null);
+            epic.setEndTime(null);
+            epic.setDuration(null);
+        }
     }
 
 
@@ -375,6 +379,22 @@ public class InMemoryTaskManager implements TaskManager {
             epic.setStatus(Status.IN_PROGRESS);
         }
     }
+
+    @Override
+    public Map<Integer, Task> getTasks() {
+        return tasks;
+    }
+
+    @Override
+    public Map<Integer, Epic> getEpics() {
+        return epics;
+    }
+
+    @Override
+    public Map<Integer, Subtask> getSubtask() {
+        return subtasks;
+    }
+
 
     @Override
     public List<Task> getHistory() {

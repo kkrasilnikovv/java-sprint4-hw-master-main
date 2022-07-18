@@ -187,7 +187,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
     }
 
 
-    public static FileBackedTasksManager loadFromFile(File file) {
+    public static FileBackedTasksManager load(File file) {
         FileBackedTasksManager backedTasksManager = new FileBackedTasksManager(file.getPath());
         boolean flag = false;
         try (BufferedReader fileReader = new BufferedReader(new FileReader(file))) {

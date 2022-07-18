@@ -8,11 +8,10 @@ import com.sun.net.httpserver.HttpServer;
 import com.yandex.taskmanager.model.Epic;
 import com.yandex.taskmanager.model.Subtask;
 import com.yandex.taskmanager.model.Task;
-import com.yandex.taskmanager.service.Managers;
+import com.yandex.taskmanager.service.InMemoryTaskManager;
 import com.yandex.taskmanager.service.TaskManager;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.URI;
@@ -23,20 +22,26 @@ import java.util.List;
 
 public class HttpTaskServer {
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
-    private TaskManager manager = Managers.getDefault();
+    private TaskManager manager = new InMemoryTaskManager();
     private HttpServer httpServer;
-    private final int port = 8080;
+    private final int PORT = 8080;
     private final Gson gson = new Gson();
 
-    public HttpTaskServer() throws IOException, InterruptedException {
-        this.httpServer = HttpServer.create();
-        httpServer.bind(new InetSocketAddress(port), 0);
+    public HttpTaskServer() throws IOException {
+        httpServer = HttpServer.create(new InetSocketAddress("localhost", PORT), 0);
         httpServer.createContext("/tasks/task", new TaskHandler());
         httpServer.createContext("/tasks/subtask", new SubtasksHandler());
         httpServer.createContext("/tasks/epic", new EpicsHandler());
         httpServer.createContext("/tasks/history", new HistoryHandler());
         httpServer.createContext("/tasks/", new AllTasksHandler());
+    }
+
+    public void start() {
         httpServer.start();
+    }
+
+    public void stop() {
+        httpServer.stop(1);
     }
 
 
@@ -55,18 +60,16 @@ public class HttpTaskServer {
                     treatmentGet(httpExchange);
                     break;
                 case "POST":
-                    treatmentPut(httpExchange);
+                    treatmentPost(httpExchange);
                     break;
                 case "DELETE":
                     treatmentDelete(httpExchange);
                     break;
                 default:
-                    responseCode = 400;
+                    responseCode = 405;
             }
             httpExchange.sendResponseHeaders(responseCode, 0);
-            try (OutputStream os = httpExchange.getResponseBody()) {
-                os.write(response.getBytes());
-            }
+            writeText(httpExchange, response);
         }
 
         protected void treatmentGet(HttpExchange httpExchange) {
@@ -87,16 +90,21 @@ public class HttpTaskServer {
             }
         }
 
-        protected void treatmentPut(HttpExchange httpExchange) throws IOException {
+        protected void treatmentPost(HttpExchange httpExchange) throws IOException {
             Headers requestHeaders = httpExchange.getRequestHeaders();
             List<String> contentTypeValues = requestHeaders.get("Content-type");
             if ((contentTypeValues != null) && (contentTypeValues.contains("application/json"))) {
-                try (InputStream inputStream = httpExchange.getRequestBody()) {
-                    String body = new String(inputStream.readAllBytes(), DEFAULT_CHARSET);
+                if (!readText(httpExchange).isEmpty()) {
+                    String body = readText(httpExchange);
                     try {
                         Task taskPost = gson.fromJson(body, Task.class);
-                        if (manager.getTasks().containsKey(taskPost.getId())) {
-                            manager.updateTask(taskPost);
+                        if (taskPost.getId() != null) {
+                            if (manager.getTasks().containsKey(taskPost.getId())) {
+                                manager.updateTask(taskPost);
+                            } else {
+                                responseCode = 404;
+                                return;
+                            }
                         } else {
                             manager.moveTask(taskPost);
                         }
@@ -104,6 +112,9 @@ public class HttpTaskServer {
                     } catch (JsonSyntaxException e) {
                         responseCode = 400;
                     }
+                } else {
+                    responseCode = 400;
+                    return;
                 }
             } else {
                 responseCode = 200;
@@ -138,18 +149,16 @@ public class HttpTaskServer {
                     treatmentGet(httpExchange);
                     break;
                 case "POST":
-                    treatmentPut(httpExchange);
+                    treatmentPost(httpExchange);
                     break;
                 case "DELETE":
                     treatmentDelete(httpExchange);
                     break;
                 default:
-                    responseCode = 400;
+                    responseCode = 405;
             }
             httpExchange.sendResponseHeaders(responseCode, 0);
-            try (OutputStream os = httpExchange.getResponseBody()) {
-                os.write(response.getBytes());
-            }
+            writeText(httpExchange, response);
         }
 
         @Override
@@ -161,7 +170,7 @@ public class HttpTaskServer {
             if (split.length == 3) {
                 if (query != null) {
                     int numb = Integer.parseInt(query.substring(3));
-                    Subtask subtask = manager.getSubtask().get(numb);
+                    Subtask subtask = manager.getSubtasks().get(numb);
                     if (subtask != null) {
                         response = gson.toJson(subtask);
                         responseCode = 200;
@@ -169,7 +178,7 @@ public class HttpTaskServer {
                         responseCode = 400;
                     }
                 } else {
-                    response = gson.toJson(manager.getSubtask());
+                    response = gson.toJson(manager.getSubtasks());
                     responseCode = 200;
                 }
             } else {
@@ -177,9 +186,9 @@ public class HttpTaskServer {
                     int numb = Integer.parseInt(query.substring(3));
                     Epic main = manager.getEpics().get(numb);
                     if (main != null) {
-                        ArrayList<Subtask> subtasks=new ArrayList<>();
-                        for(Integer integer: main.getIdSubtask()){
-                            if(manager.getSubtaskId(integer)!=null){
+                        ArrayList<Subtask> subtasks = new ArrayList<>();
+                        for (Integer integer : main.getIdSubtask()) {
+                            if (manager.getSubtaskId(integer) != null) {
                                 subtasks.add(manager.getSubtaskId(integer));
                             }
                         }
@@ -195,16 +204,21 @@ public class HttpTaskServer {
         }
 
         @Override
-        protected void treatmentPut(HttpExchange httpExchange) throws IOException {
+        protected void treatmentPost(HttpExchange httpExchange) throws IOException {
             Headers requestHeaders = httpExchange.getRequestHeaders();
             List<String> contentTypeValues = requestHeaders.get("Content-type");
             if ((contentTypeValues != null) && (contentTypeValues.contains("application/json"))) {
-                try (InputStream inputStream = httpExchange.getRequestBody()) {
-                    String body = new String(inputStream.readAllBytes(), DEFAULT_CHARSET);
+                if (!readText(httpExchange).isEmpty()) {
+                    String body = readText(httpExchange);
                     try {
                         Subtask subtaskPost = gson.fromJson(body, Subtask.class);
-                        if (manager.getSubtask().containsKey(subtaskPost.getId())) {
-                            manager.updateSubtask(subtaskPost);
+                        if (subtaskPost.getId() != null) {
+                            if (manager.getSubtasks().containsKey(subtaskPost.getId())) {
+                                manager.updateSubtask(subtaskPost);
+                            } else {
+                                responseCode = 404;
+                                return;
+                            }
                         } else {
                             manager.moveSubtask(subtaskPost);
                         }
@@ -212,6 +226,9 @@ public class HttpTaskServer {
                     } catch (JsonSyntaxException e) {
                         responseCode = 400;
                     }
+                } else {
+                    responseCode = 400;
+                    return;
                 }
             } else {
                 responseCode = 501;
@@ -248,18 +265,16 @@ public class HttpTaskServer {
                     treatmentGet(httpExchange);
                     break;
                 case "POST":
-                    treatmentPut(httpExchange);
+                    treatmentPost(httpExchange);
                     break;
                 case "DELETE":
                     treatmentDelete(httpExchange);
                     break;
                 default:
-                    responseCode = 400;
+                    responseCode = 405;
             }
             httpExchange.sendResponseHeaders(responseCode, 0);
-            try (OutputStream os = httpExchange.getResponseBody()) {
-                os.write(response.getBytes());
-            }
+            writeText(httpExchange, response);
         }
 
         @Override
@@ -282,16 +297,21 @@ public class HttpTaskServer {
         }
 
         @Override
-        protected void treatmentPut(HttpExchange httpExchange) throws IOException {
+        protected void treatmentPost(HttpExchange httpExchange) throws IOException {
             Headers requestHeaders = httpExchange.getRequestHeaders();
             List<String> contentTypeValues = requestHeaders.get("Content-type");
             if ((contentTypeValues != null) && (contentTypeValues.contains("application/json"))) {
-                try (InputStream inputStream = httpExchange.getRequestBody()) {
-                    String body = new String(inputStream.readAllBytes(), DEFAULT_CHARSET);
+                if (!readText(httpExchange).isEmpty()) {
+                    String body = readText(httpExchange);
                     try {
                         Epic epic = gson.fromJson(body, Epic.class);
-                        if (manager.getEpics().containsKey(epic.getId())) {
-                            manager.updateEpic(epic);
+                        if (epic.getId() != null) {
+                            if (manager.getEpics().containsKey(epic.getId())) {
+                                manager.updateEpic(epic);
+                            } else {
+                                responseCode = 404;
+                                return;
+                            }
                         } else {
                             manager.moveEpic(epic);
                         }
@@ -299,6 +319,9 @@ public class HttpTaskServer {
                     } catch (JsonSyntaxException e) {
                         responseCode = 400;
                     }
+                } else {
+                    responseCode = 400;
+                    return;
                 }
             } else {
                 responseCode = 400;
@@ -337,11 +360,11 @@ public class HttpTaskServer {
                     responseCode = 200;
                     break;
                 default:
-                    responseCode = 400;
+                    responseCode = 405;
             }
             httpExchange.sendResponseHeaders(responseCode, 0);
             try (OutputStream os = httpExchange.getResponseBody()) {
-                os.write(response.getBytes());
+                os.write(response.getBytes(DEFAULT_CHARSET));
             }
         }
     }
@@ -358,12 +381,22 @@ public class HttpTaskServer {
                     responseCode = 200;
                     break;
                 default:
-                    responseCode = 400;
+                    responseCode = 405;
             }
             httpExchange.sendResponseHeaders(responseCode, 0);
             try (OutputStream os = httpExchange.getResponseBody()) {
-                os.write(response.getBytes());
+                os.write(response.getBytes(DEFAULT_CHARSET));
             }
+        }
+    }
+
+    private String readText(HttpExchange h) throws IOException {
+        return new String(h.getRequestBody().readAllBytes(), DEFAULT_CHARSET);
+    }
+
+    private void writeText(HttpExchange h, String response) throws IOException {
+        try (OutputStream os = h.getResponseBody()) {
+            os.write(response.getBytes());
         }
     }
 }

@@ -58,7 +58,7 @@ public interface TaskManager {
     public void checkStatusEpic(Epic epic);
     public Map<Integer, Task> getTasks();
     public Map<Integer, Epic> getEpics();
-    public Map<Integer, Subtask> getSubtask();
+    public Map<Integer, Subtask> getSubtasks();
 
     public List<Task> getHistory();
 }

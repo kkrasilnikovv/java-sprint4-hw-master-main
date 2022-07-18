@@ -5,7 +5,7 @@ import java.util.*;
 
 
 public class InMemoryHistoryManager implements HistoryManager {
-    protected final MemoryLinkedList history = new MemoryLinkedList();
+    protected  MemoryLinkedList history = new MemoryLinkedList();
 
     @Override
     public void add(Task task) {
@@ -16,6 +16,10 @@ public class InMemoryHistoryManager implements HistoryManager {
     @Override
     public List<Task> getHistory() {
         return history.getTasks();
+    }
+    @Override
+    public void setHistory(MemoryLinkedList list){
+        history=list;
     }
 
     @Override

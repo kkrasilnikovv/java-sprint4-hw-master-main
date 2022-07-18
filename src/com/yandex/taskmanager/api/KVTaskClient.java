@@ -7,33 +7,17 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class KVTaskClient {
-    private final String url;
-    private KVServer server;
-    private final String token;
+    private final String URL;
+    private String token;
 
-    public KVTaskClient(String url) throws IOException, InterruptedException {
-        this.url = url;
-        server = new KVServer();
-        server.start();
-        // создаём объект, описывающий HTTP-запрос
-        HttpRequest request = HttpRequest.newBuilder() // получаем экземпляр билдера
-                .GET()    // указываем HTTP-метод запроса
-                .uri(URI.create(url + "register")) // указываем адрес ресурса
-                .version(HttpClient.Version.HTTP_1_1) // указываем версию протокола
-                .build(); // заканчиваем настройку и создаём ("строим") http-запрос
-        // HTTP-клиент с настройками по умолчанию
-        HttpClient client = HttpClient.newHttpClient();
+    public KVTaskClient(String url) {
+        this.URL = url;
+        register(url);
 
-        // получаем стандартный обработчик тела запроса с конвертацией содержимого в строку
-        HttpResponse.BodyHandler<String> handler = HttpResponse.BodyHandlers.ofString();
-
-        // отправляем запрос и получаем ответ от сервера
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        token = response.body();
     }
 
-    public void put(String key, String json) throws IOException, InterruptedException {
-        URI saver = URI.create(url + "save/" + key + "?" + "API_TOKEN=" + token);
+    public void put(String key, String json) {
+        URI saver = URI.create(URL + "save/" + key + "?" + "API_TOKEN=" + token);
         HttpRequest request = HttpRequest.newBuilder() // получаем экземпляр билдера
                 .POST(HttpRequest.BodyPublishers.ofString(json))  // указываем HTTP-метод запроса
                 .header("content-type", "application/json")
@@ -42,12 +26,21 @@ public class KVTaskClient {
                 .build(); // заканчиваем настройку и создаём ("строим") http-запрос
         // HTTP-клиент с настройками по умолчанию
         HttpClient client = HttpClient.newHttpClient();
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.statusCode());
+        try {
+            HttpResponse<Void> response = client.send(request, HttpResponse.BodyHandlers.discarding());
+            if (response.statusCode() == 200) {
+                System.out.println(response.statusCode());
+            } else {
+                throw new StatusCodeException("Вернулся не подходящий код ответа");
+            }
+        } catch (InterruptedException | IOException e) {
+            throw new StatusCodeException("Вернулся не подходящий код ответа");
+        }
+
     }
 
-    public String load(String key) throws IOException, InterruptedException {
-        URI saver = URI.create(url + "load/" + key + "?" + "API_TOKEN=" + token);
+    public String load(String key) {
+        URI saver = URI.create(URL + "load/" + key + "?" + "API_TOKEN=" + token);
         HttpRequest request = HttpRequest.newBuilder() // получаем экземпляр билдера
                 .GET()  // указываем HTTP-метод запроса
                 .uri(saver) // указываем адрес ресурса
@@ -55,8 +48,37 @@ public class KVTaskClient {
                 .version(HttpClient.Version.HTTP_1_1) // указываем версию протокола
                 .build(); // заканчиваем настройку и создаём ("строим") http-запрос
         // HTTP-клиент с настройками по умолчанию
+        try {
+            HttpClient client = HttpClient.newHttpClient();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 200) {
+                return response.body();
+            } else {
+                throw new StatusCodeException("Вернулся не подходящий код ответа");
+            }
+        } catch (InterruptedException | IOException e) {
+            throw new StatusCodeException("Вернулся не подходящий код ответа");
+        }
+    }
+
+    private String register(String url) {
+        HttpRequest request = HttpRequest.newBuilder() // получаем экземпляр билдера
+                .GET()    // указываем HTTP-метод запроса
+                .uri(URI.create(url + "register")) // указываем адрес ресурса
+                .version(HttpClient.Version.HTTP_1_1) // указываем версию протокола
+                .build(); // заканчиваем настройку и создаём ("строим") http-запрос
+        // HTTP-клиент с настройками по умолчанию
         HttpClient client = HttpClient.newHttpClient();
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        return response.body();
+
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 200) {
+                return token = response.body();
+            } else {
+                throw new StatusCodeException("Вернулся не подходящий код ответа");
+            }
+        } catch (InterruptedException | IOException e) {
+            throw new StatusCodeException("Вернулся не подходящий код ответа");
+        }
     }
 }

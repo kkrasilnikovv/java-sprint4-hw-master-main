@@ -32,7 +32,7 @@ class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksManager>
     public void shouldBeEmptyWhenSaveEmptyAndLoadEmptyTasks() {
         manager.deleteTaskAll();
         manager.deleteEpicAll();
-        FileBackedTasksManager load = FileBackedTasksManager.loadFromFile(file);
+        FileBackedTasksManager load = FileBackedTasksManager.load(file);
         assertTrue(load.getTaskAll().isEmpty() && load.getEpicAll().isEmpty());
     }
 
@@ -48,7 +48,7 @@ class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksManager>
         manager.moveSubtask(subtaskTest);
         Task taskTest=new Task("NameTask","desc",Status.NEW);
         manager.moveTask(taskTest);
-        FileBackedTasksManager load = FileBackedTasksManager.loadFromFile(file);
+        FileBackedTasksManager load = FileBackedTasksManager.load(file);
         assertEquals(epicTest, load.getEpicById(1));
         assertEquals(subtaskTest, load.getSubtaskId(2));
         assertEquals(taskTest,load.getTaskId(3));
@@ -60,7 +60,7 @@ class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksManager>
         manager.deleteSubtaskAll();
         manager.deleteTaskAll();
         manager.deleteEpicAll();
-        FileBackedTasksManager load = FileBackedTasksManager.loadFromFile(file);
+        FileBackedTasksManager load = FileBackedTasksManager.load(file);
         assertEquals(0, load.getHistory().size());
     }
 
@@ -70,7 +70,7 @@ class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksManager>
         manager.moveTask(taskTest);
         List<Task> temp=new ArrayList<>();
         temp.add(manager.getTaskId(1));
-        FileBackedTasksManager load = FileBackedTasksManager.loadFromFile(file);
+        FileBackedTasksManager load = FileBackedTasksManager.load(file);
         assertEquals(temp,load.getHistory());
     }
     @Test
@@ -88,7 +88,7 @@ class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksManager>
         manager.moveTask(three);
 
 
-        FileBackedTasksManager load = FileBackedTasksManager.loadFromFile(file);
+        FileBackedTasksManager load = FileBackedTasksManager.load(file);
         assertEquals(manager.getPrioritizedTasks(),load.getPrioritizedTasks());
     }
 

@@ -21,9 +21,9 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     protected final HistoryManager managerHistory = Managers.getDefaultHistory();
-    protected final HashMap<Integer, Task> tasks = new HashMap<>();
-    protected final HashMap<Integer, Subtask> subtasks = new HashMap<>();
-    protected final HashMap<Integer, Epic> epics = new HashMap<>();
+    protected  HashMap<Integer, Task> tasks = new HashMap<>();
+    protected  HashMap<Integer, Subtask> subtasks = new HashMap<>();
+    protected  HashMap<Integer, Epic> epics = new HashMap<>();
     private Set<Task> sortedTasks = new TreeSet<>((o1, o2) -> {
         if (o1.getStartTime() != null && o2.getStartTime() != null) {
             if (o1.getStartTime().isAfter(o2.getStartTime())) {
@@ -72,6 +72,9 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public Set<Task> getPrioritizedTasks() {
         return sortedTasks;
+    }
+    public void setPrioritizedTasks(Set<Task> tasks){
+        sortedTasks=tasks;
     }
 
     @Override
@@ -391,7 +394,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public Map<Integer, Subtask> getSubtask() {
+    public Map<Integer, Subtask> getSubtasks() {
         return subtasks;
     }
 

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="82833545-bf10-46a4-8893-ced22816a23b" name="Changes" comment="Правки после 3 ревью">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/google_code_gson.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HTTPTaskManagerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/api/KVServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/api/KVTaskClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/HTTPTaskManager.java" afterDir="false" />
+    <list default="true" id="82833545-bf10-46a4-8893-ced22816a23b" name="Changes" comment="Тестовое ревью,проект не доделан">
+      <change afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/api/StatusCodeException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-sprint3-hw.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java-sprint3-hw.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HistoryManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HistoryManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/tasks/EpicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/tasks/EpicTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/FileBackedTasksManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/FileBackedTasksManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HTTPTaskManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HTTPTaskManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/api/KVTaskClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/api/KVTaskClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/FileBackedTasksManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/FileBackedTasksManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/HTTPTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/HTTPTaskManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/HistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/HistoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/InMemoryHistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/InMemoryHistoryManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/InMemoryTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/InMemoryTaskManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/Managers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/Managers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/TaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/TaskManager.java" afterDir="false" />
@@ -45,26 +45,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "create.test.in.the.same.root": "true",
-    "last_opened_file_path": "C:/Users/Иван/IdeaProjects/java-sprint4-hw-master-main/src/com/yandex/taskmanager/api",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.editor"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ivan/Desktop/dima&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Иван\IdeaProjects\java-sprint4-hw-master-main\src\com\yandex\taskmanager\api" />
@@ -89,7 +89,7 @@
       <recent name="com.yandex.taskmanager.service" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HTTPTaskManagerTest">
+  <component name="RunManager" selected="JUnit.HTTPTaskManagerTest.metodLoad">
     <configuration name="HTTPTaskManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.service.HTTPTaskManager" />
       <module name="java-sprint3-hw" />
@@ -131,7 +131,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HistoryManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HTTPTaskManagerTest.metodLoad" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-sprint3-hw" />
       <extension name="coverage">
         <pattern>
@@ -140,8 +140,9 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.yandex.taskmanager.Tests.managers" />
-      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.HistoryManagerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.HTTPTaskManagerTest" />
+      <option name="METHOD_NAME" value="metodLoad" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -163,10 +164,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HTTPTaskManagerTest.metodLoad" />
         <item itemvalue="JUnit.HTTPTaskManagerTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.HTTPTaskManager" />
-        <item itemvalue="JUnit.InMemoryTaskManagerTest" />
         <item itemvalue="JUnit.InMemoryTaskManagerTest" />
       </list>
     </recent_temporary>
@@ -181,7 +182,12 @@
       <updated>1651319831648</updated>
       <workItem from="1657625215843" duration="13655000" />
       <workItem from="1657699072096" duration="10000" />
-      <workItem from="1657881850716" duration="8162000" />
+      <workItem from="1657881850716" duration="8982000" />
+      <workItem from="1657991150471" duration="165000" />
+      <workItem from="1657991330121" duration="11513000" />
+      <workItem from="1658049288682" duration="8671000" />
+      <workItem from="1658122378946" duration="2599000" />
+      <workItem from="1658163590376" duration="1838000" />
     </task>
     <task id="LOCAL-00001" summary="Программа исправна работает на поверхностных тестах.">
       <created>1651672214532</created>
@@ -379,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657656810189</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Тестовое ревью,проект не доделан">
+      <created>1657905672136</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1657905672136</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -415,7 +428,8 @@
     <MESSAGE value="Правки после ревью" />
     <MESSAGE value="Правки после 2 ревью" />
     <MESSAGE value="Правки после 3 ревью" />
-    <option name="LAST_COMMIT_MESSAGE" value="Правки после 3 ревью" />
+    <MESSAGE value="Тестовое ревью,проект не доделан" />
+    <option name="LAST_COMMIT_MESSAGE" value="Тестовое ревью,проект не доделан" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -431,23 +445,182 @@
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HTTPTaskManagerTest.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="58" />
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/service/HTTPTaskManager.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HTTPTaskManagerTest.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="61" />
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/service/HTTPTaskManager.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/KVTaskClient.java</url>
+          <line>8</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/KVTaskClient.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/KVServer.java</url>
-          <line>94</line>
-          <properties class="com.yandex.taskmanager.api.KVServer" method="start">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>29</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer" method="&lt;init&gt;">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="62" />
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>54</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer.TaskHandler" method="handle">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>74</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer.TaskHandler" method="treatmentGet">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="88" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>92</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer.TaskHandler" method="treatmentPost">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>123</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer.TaskHandler" method="treatmentDelete">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>143</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer.SubtasksHandler" method="handle">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="91" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>164</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer.SubtasksHandler" method="treatmentGet">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>206</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer.SubtasksHandler" method="treatmentPost">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>238</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer.SubtasksHandler" method="treatmentDelete">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="94" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>259</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer.EpicsHandler" method="handle">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="95" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>280</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer.EpicsHandler" method="treatmentGet">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="96" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>299</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer.EpicsHandler" method="treatmentPost">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>331</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer.EpicsHandler" method="treatmentDelete">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>352</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer.HistoryHandler" method="handle">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>373</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer.AllTasksHandler" method="handle">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="100" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>392</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer" method="readText">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>396</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer" method="writeText">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="102" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -4,8 +4,8 @@ package com.yandex.taskmanager.service;
 import java.io.IOException;
 
 public class Managers {
-    public static HTTPTaskManager getDefault() {
-        return new HTTPTaskManager("http://localhost:8080/", true);
+    public static HTTPTaskManager getDefault() throws IOException {
+        return new HTTPTaskManager("http://localhost:8070/", false);
     }
 
     public static HistoryManager getDefaultHistory() {

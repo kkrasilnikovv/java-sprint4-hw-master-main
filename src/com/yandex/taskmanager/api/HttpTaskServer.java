@@ -8,7 +8,7 @@ import com.sun.net.httpserver.HttpServer;
 import com.yandex.taskmanager.model.Epic;
 import com.yandex.taskmanager.model.Subtask;
 import com.yandex.taskmanager.model.Task;
-import com.yandex.taskmanager.service.InMemoryTaskManager;
+import com.yandex.taskmanager.service.Managers;
 import com.yandex.taskmanager.service.TaskManager;
 
 import java.io.IOException;
@@ -22,7 +22,7 @@ import java.util.List;
 
 public class HttpTaskServer {
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
-    private TaskManager manager = new InMemoryTaskManager();
+    private TaskManager manager = Managers.getDefault();
     private HttpServer httpServer;
     private final int PORT = 8080;
     private final Gson gson = new Gson();
@@ -94,8 +94,9 @@ public class HttpTaskServer {
             Headers requestHeaders = httpExchange.getRequestHeaders();
             List<String> contentTypeValues = requestHeaders.get("Content-type");
             if ((contentTypeValues != null) && (contentTypeValues.contains("application/json"))) {
-                if (!readText(httpExchange).isEmpty()) {
-                    String body = readText(httpExchange);
+                String body = readText(httpExchange);
+                if (!body.isEmpty()) {
+
                     try {
                         Task taskPost = gson.fromJson(body, Task.class);
                         if (taskPost.getId() != null) {
@@ -208,8 +209,8 @@ public class HttpTaskServer {
             Headers requestHeaders = httpExchange.getRequestHeaders();
             List<String> contentTypeValues = requestHeaders.get("Content-type");
             if ((contentTypeValues != null) && (contentTypeValues.contains("application/json"))) {
-                if (!readText(httpExchange).isEmpty()) {
-                    String body = readText(httpExchange);
+                String body = readText(httpExchange);
+                if (!body.isEmpty()) {
                     try {
                         Subtask subtaskPost = gson.fromJson(body, Subtask.class);
                         if (subtaskPost.getId() != null) {
@@ -301,8 +302,8 @@ public class HttpTaskServer {
             Headers requestHeaders = httpExchange.getRequestHeaders();
             List<String> contentTypeValues = requestHeaders.get("Content-type");
             if ((contentTypeValues != null) && (contentTypeValues.contains("application/json"))) {
-                if (!readText(httpExchange).isEmpty()) {
-                    String body = readText(httpExchange);
+                String body = readText(httpExchange);
+                if (!body.isEmpty()) {
                     try {
                         Epic epic = gson.fromJson(body, Epic.class);
                         if (epic.getId() != null) {
@@ -351,7 +352,7 @@ public class HttpTaskServer {
     public class HistoryHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange httpExchange) throws IOException {
-            String response = null;
+            String response = "";
             String method = httpExchange.getRequestMethod();
             int responseCode;
             switch (method) {
@@ -363,16 +364,14 @@ public class HttpTaskServer {
                     responseCode = 405;
             }
             httpExchange.sendResponseHeaders(responseCode, 0);
-            try (OutputStream os = httpExchange.getResponseBody()) {
-                os.write(response.getBytes(DEFAULT_CHARSET));
-            }
+            writeText(httpExchange, response);
         }
     }
 
     public class AllTasksHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange httpExchange) throws IOException {
-            String response = null;
+            String response ="";
             String method = httpExchange.getRequestMethod();
             int responseCode;
             switch (method) {
@@ -384,9 +383,7 @@ public class HttpTaskServer {
                     responseCode = 405;
             }
             httpExchange.sendResponseHeaders(responseCode, 0);
-            try (OutputStream os = httpExchange.getResponseBody()) {
-                os.write(response.getBytes(DEFAULT_CHARSET));
-            }
+            writeText(httpExchange, response);
         }
     }
 

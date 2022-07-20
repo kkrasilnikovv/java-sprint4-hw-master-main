@@ -10,9 +10,9 @@ public class KVTaskClient {
     private final String URL;
     private String token;
 
-    public KVTaskClient(String url) {
+    public KVTaskClient(String url){
         this.URL = url;
-        register(url);
+        token=register(url);
 
     }
 
@@ -73,7 +73,7 @@ public class KVTaskClient {
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() == 200) {
-                return token = response.body();
+                return response.body();
             } else {
                 throw new StatusCodeException("Вернулся не подходящий код ответа");
             }

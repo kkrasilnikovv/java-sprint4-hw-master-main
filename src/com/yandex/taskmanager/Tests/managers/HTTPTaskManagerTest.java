@@ -180,6 +180,24 @@ class HttpTaskServerTest {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         assertEquals(200, response.statusCode());
     }
+    @Test
+    public void requestPrioritizedTasks() throws InterruptedException, IOException {
+        HttpClient client = HttpClient.newHttpClient();
+        URI uri = URI.create("http://localhost:8080/tasks/");
+        HttpRequest request = HttpRequest.newBuilder().uri(uri).GET().build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        assertEquals(200, response.statusCode());
+
+    }
+    @Test
+    public void requestHistory() throws InterruptedException, IOException {
+        HttpClient client = HttpClient.newHttpClient();
+        URI uri = URI.create("http://localhost:8080/tasks/history");
+        HttpRequest request = HttpRequest.newBuilder().uri(uri).GET().build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        assertEquals(200, response.statusCode());
+
+    }
 
 
 }

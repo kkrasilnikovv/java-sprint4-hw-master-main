@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="82833545-bf10-46a4-8893-ced22816a23b" name="Changes" comment="Тестовое ревью,проект не доделан">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HTTPTaskManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HTTPTaskManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/api/KVTaskClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/api/KVTaskClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/HTTPTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/HTTPTaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/Managers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/Managers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/HistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/HistoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/InMemoryHistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/yandex/taskmanager/service/InMemoryHistoryManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +79,22 @@
       <recent name="com.yandex.taskmanager.service" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HttpTaskServerTest">
+  <component name="RunManager" selected="JUnit.HttpTaskServerTest.requestHistory">
+    <configuration name="HTTPTaskManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-sprint3-hw" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yandex.taskmanager.Tests.managers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.yandex.taskmanager.Tests.managers" />
+      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.HTTPTaskManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HttpTaskServerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-sprint3-hw" />
       <extension name="coverage">
@@ -97,7 +110,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HttpTaskServerTest.requestTasks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HttpTaskServerTest.requestHistory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-sprint3-hw" />
       <extension name="coverage">
         <pattern>
@@ -107,23 +120,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.yandex.taskmanager.Tests.managers" />
       <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.HttpTaskServerTest" />
-      <option name="METHOD_NAME" value="requestTasks" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HttpTaskServerTest.sendingEpics" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java-sprint3-hw" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.yandex.taskmanager.Tests.managers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.yandex.taskmanager.Tests.managers" />
-      <option name="MAIN_CLASS_NAME" value="com.yandex.taskmanager.Tests.managers.HttpTaskServerTest" />
-      <option name="METHOD_NAME" value="sendingEpics" />
+      <option name="METHOD_NAME" value="requestHistory" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -163,11 +160,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.HttpTaskServerTest" />
-        <item itemvalue="JUnit.HttpTaskServerTest.sendingSubtasks" />
-        <item itemvalue="JUnit.HttpTaskServerTest.sendingEpics" />
+        <item itemvalue="JUnit.HttpTaskServerTest.requestHistory" />
         <item itemvalue="JUnit.HttpTaskServerTest.sendingTasks" />
-        <item itemvalue="JUnit.HttpTaskServerTest.requestTasks" />
+        <item itemvalue="JUnit.HttpTaskServerTest" />
+        <item itemvalue="JUnit.HTTPTaskManagerTest" />
+        <item itemvalue="JUnit.HttpTaskServerTest.sendingSubtasks" />
       </list>
     </recent_temporary>
   </component>
@@ -189,7 +186,8 @@
       <workItem from="1658163590376" duration="2507000" />
       <workItem from="1658214846821" duration="6566000" />
       <workItem from="1658267381726" duration="15000" />
-      <workItem from="1658297328970" duration="5342000" />
+      <workItem from="1658297328970" duration="5951000" />
+      <workItem from="1658327717773" duration="2812000" />
     </task>
     <task id="LOCAL-00001" summary="Программа исправна работает на поверхностных тестах.">
       <created>1651672214532</created>
@@ -401,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658165493831</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Тестовое ревью,проект не доделан">
+      <created>1658302731724</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1658302731724</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -454,11 +459,6 @@
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/service/HTTPTaskManager.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="74" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/KVTaskClient.java</url>
           <line>8</line>
           <option name="timeStamp" value="75" />
@@ -482,6 +482,21 @@
           <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/Main.java</url>
           <line>4</line>
           <option name="timeStamp" value="130" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HTTPTaskManagerTest.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="131" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HTTPTaskManagerTest.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="132" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/Tests/managers/HTTPTaskManagerTest.java</url>
+          <line>120</line>
+          <option name="timeStamp" value="138" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
@@ -593,15 +608,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
-          <line>353</line>
-          <properties class="com.yandex.taskmanager.api.HttpTaskServer.HistoryHandler" method="handle">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="99" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
           <line>372</line>
           <properties class="com.yandex.taskmanager.api.HttpTaskServer.AllTasksHandler" method="handle">
             <option name="EMULATED" value="true" />
@@ -626,6 +632,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/yandex/taskmanager/api/HttpTaskServer.java</url>
+          <line>353</line>
+          <properties class="com.yandex.taskmanager.api.HttpTaskServer.HistoryHandler" method="handle">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="139" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

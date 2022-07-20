@@ -17,10 +17,7 @@ public class InMemoryHistoryManager implements HistoryManager {
     public List<Task> getHistory() {
         return history.getTasks();
     }
-    @Override
-    public void setHistory(MemoryLinkedList list){
-        history=list;
-    }
+
 
     @Override
     public void removeById(int id) {
